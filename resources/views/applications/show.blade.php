@@ -29,7 +29,7 @@
                 </div>
                 <div>
                     <div class="text-sm text-gray-500">Tanggal Lahir</div>
-                    <div>{{ optional($application->application_birth_date)->format('d/m/Y') }}</div>
+                    <div>{{ optional($application->application_birth_date)->format('d M Y') }}</div>
                 </div>
                 <div class="md:col-span-2">
                     <div class="text-sm text-gray-500">Alamat</div>

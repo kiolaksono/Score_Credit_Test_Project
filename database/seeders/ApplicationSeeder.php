@@ -24,12 +24,12 @@ class ApplicationSeeder extends Seeder
         for ($i = 0; $i < $jumlahData; $i++) {
             
             // --- LOGIKA GENDER ---
-            // 1. Pilih L atau P secara acak
+            // 1. Pilih 1 atau 2 secara acak
             $genderCode = $faker->randomElement(['1', '2']);
             
             // 2. Tentukan parameter untuk Faker Name agar namanya sesuai gender
-            // Jika 'L', minta faker nama laki-laki ('male'). Jika 'P', minta 'female'.
-            $genderForFaker = ($genderCode == '1') ? 'Laki-Laki' : 'female';
+            // Jika '1', minta faker nama laki-laki. Jika 'P', minta perempuan'.
+            $genderForFaker = ($genderCode == '1') ? 'Laki-Laki' : 'Perempuan';
 
             // --- A. Simpan Data Pemohon ---
             $application = Application::create([
@@ -40,7 +40,6 @@ class ApplicationSeeder extends Seeder
                 
                 // Simpan gender ke database
                 'application_gender'      => $genderCode, 
-                
                 'application_birth_place' => $faker->city,
                 'application_birth_date'  => $faker->date('Y-m-d', '-25 years'),
                 'application_address'     => $faker->address,
