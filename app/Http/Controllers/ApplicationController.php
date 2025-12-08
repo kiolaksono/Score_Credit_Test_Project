@@ -184,10 +184,11 @@ class ApplicationController extends Controller
 
             Log::error('ApplicationController@store error: ' . $e->getMessage(), ['exception' => $e]);
 
-            return response()->view('errors.application_error', [
-                'message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ], 500);
+            // UBAH KE SINI:
+            // Kembalikan user ke form input dengan pesan error (Flash Message)
+            return redirect()->back()
+                    ->withInput() // Supaya isian form tidak hilang
+                    ->with('error', 'Terjadi kesalahan sistem: ' . $e->getMessage());
         }
     }
 }
